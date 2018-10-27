@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<style>
+    div.ad{
+        width:200px;
+        border:5px double black;
+        color:black;
+        text-align:center;
+        vertical-align: middle;
+    }
+</style>
+<body>
+    <div class="ad"></div>
+    <p style="font-variant:small-caps">this paragraph is in small-caps</p>
+    <p style="letter-spacing:5px">this paragraph has its letters spaced by 5 pixes</p>
+    <p style="word-spacing: 10px">this paragraph has its words spaced by 10 pixes</p>
+    <p style="text-transform:capitalize">this paragraph has its text transformed so that every word is capitalized </p>
+    <!-- 
+        布局属性：决定内容在网页上如何排列
+        display: block      元素显示在下一行，作为一个新段落
+                list-item   元素显示在下一行，前面有列表元素标记
+                inline      元素显示在当前段落内
+                none        元素隐藏不显示
+        display属性依赖于相对位置的概念，相对于网页中的其他元素进行定位
+        格式化属性：控制网页内容的外观
+        border:
+        border-style:solid double dashed dotted groove ridge inset outset none
+        border-style默认值none,但当图像放在<a>内作为链接图像时，默认自动设置solid
+        
+        css伪类(pseudo class)伪类是应用于元素状态的一种特殊样式类
+
+        设置a:hover后，链接改变字体大小，或粗体，链接的整体尺寸因鼠标指向二改变，
+        浏览器必须重新计算网页中在链接后的每个部分的位置，然后重画。
+
+        通用样式类，可应用与任何元素，而不是特定类型的元素，以.打头
+
+        样式规则使用的定位类型（相对和绝对）是由position属性决定的，
+        relative相对定位
+        absolute绝对定位
+        left right top bottom指定具体的位置，两种定位都适用。
+        相对定位下，元素的位置相对于元素的原始位置的偏移来指定
+        绝对定位下，元素的位置是相对于父元素指定的
+
+        z-index值仅在与样式表中的其他样式规则比较时才有意义，即设置单个没意义
+        相互重叠没有指定z-index的元素，较后出现的元素将显示在上面
+        margin设置为百分比时，是基于整个网页而不是元素大小
+
+        text-align使元素在其定界区域内水平对齐
+        vertical-align，使元素与其父元素或当前行对齐
+        top元素顶部与当前行对齐
+        middle元素的中心与当前行对齐
+        bottom元素的底部与当前行对齐
+        text-top元素的顶部与父元素的顶部对齐
+        baseline元素的基线与父元素的基线对齐
+        text-bottom元素的底部与父元素的底部对齐
+        sub将元素作为父元素的下标
+        super将元素作为父元素的上标
+
+        控制文本流的样式属性
+        float:决定文本如何沿元素绕排
+        clear:进制文本沿元素绕
+        none left right both
+        overflow:在元素太小而不能包含所有文本时控制文本的溢出方式
+        visible hidden scroll
+
+
+        The float CSS property specifies that an element should be placed along the left or right
+         side of its container, allowing text and inline elements to wrap around it. The element 
+         is removed from the normal flow of the web page, ？though still remaining a part of the
+          flow (in contrast to absolute positioning).
+
+        As float implies the use of the block layout, it modifies the computed value of the display
+         values, in some cases:
+
+        Elements that are relatively positioned remain in the normal flow of the document. 
+        In contrast, an element that is absolutely positioned is taken out of the flow; thus, 
+        other elements are positioned as if it did not exist. The absolutely positioned element 
+        is positioned relative to its nearest positioned ancestor (i.e., the nearest ancestor 
+        that is not static). If a positioned ancestor doesn't exist,  it is positioned relative 
+        to the ICB (initial containing block — see also the W3C definition), which the containing
+         block of the document's root element.
+
+
+
+        
+
+
+     -->
+    <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+    </ul>
+    
+</body>
+</html>

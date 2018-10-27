@@ -79,9 +79,15 @@
     var arr=str1.match(/\d+/g); */
 
     //写出同时包含abc不考虑顺序的正则
-    str="bacd";
+    str="bacdabcacbbcacabcbaaababbacc";
     //reg=/([a-c])([\1])/;//reg.test("a\1")==true []中\1就是\1
+    reg=/^[^abc]*([abc])[^abc]*((?!\1)[abc])[^abc]*((?!\1)(?!\2)[abc])[^abc]*$/;
+    //开头[不是abc]{0,} ([abc]) [不是abc]{0,}((不跟\1)[abc])[^abc]*((不跟\1)(不跟\2)[abc]) [^abc]{0,}
 
+    //((?!\1)[abc])非\1的[abc],((?!\1)(?!\2)[abc])非\1\2的[abc]
+    reg=/([abc])((?!\1)[abc])((?!\1)(?!\2)[abc])/g;//修饰前边的和后边的括起来为什么呢
+    //x(?!y) Matches x only if x is not followed by y.
+    reg=/([abc])(?!\1)([abc])(?!\1)(?!\2)[abc]/g;//这样更好理解
     let ary=str.match(reg);
     console.log(ary);
 
@@ -121,6 +127,8 @@ console.log(str.match(reg1));//"fdjka ljfdl"
 "do" 后边使用 "(?!/w)" 和使用 "/b" 效果是一样的。
 
  */
+
+    var s="[content=\"Tech\"]内容1[/content]其他内容[content=\"Sales\"]内容2[/content]";
 
 
     </script>
