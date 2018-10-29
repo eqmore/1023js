@@ -86,6 +86,7 @@
 
     //((?!\1)[abc])非\1的[abc],((?!\1)(?!\2)[abc])非\1\2的[abc]
     reg=/([abc])((?!\1)[abc])((?!\1)(?!\2)[abc])/g;//修饰前边的和后边的括起来为什么呢
+
     //x(?!y) Matches x only if x is not followed by y.
     reg=/([abc])(?!\1)([abc])(?!\1)(?!\2)[abc]/g;//这样更好理解
     let ary=str.match(reg);
@@ -102,6 +103,7 @@
     
     /* str="aaa ffffff999999999";
     reg=/(\w)((?=\1\1\1)(\1))+/;//？剩下两位原因：\w匹配时后边必须有三个，之后跟着\1，所以是剩两个
+
     //x(?=y) Matches x only if x is followed by y.
     console.log(str.match(reg)); */
 
@@ -128,8 +130,91 @@ console.log(str.match(reg1));//"fdjka ljfdl"
 
  */
 
+        //取出Tech,Sales,内容1，内容2： a[0][0]='Tech' a[0][1]='Sales'
+    let a=[];
     var s="[content=\"Tech\"]内容1[/content]其他内容[content=\"Sales\"]内容2[/content]";
+    /* reg=/(\w+)(?=\"])/g;
+    //console.log(s.match(reg));
+    a[0]=s.match(reg);
+    reg=/([\u4e00-\u9fa5\d]+)(?=\[\/)/g;//[  /需要转义
+    a[1]=s.match(reg);
+    //console.log(s.match(reg));
+    console.log(a); */
 
+    reg=/(([^"]+)(?="]))|([^\[\]]+(?=\[\/))/g;
+    console.log(s.match(reg));
+    console.log(s.match(/(([^"]+)(?="]))/g));
+
+    let t=s.match(/\[content[^\]]+].+?\[\/content]/ig);
+    console.log(s.match(/\[content[^\]]+].+?\[\/content]/ig));
+    //匹配["[content="Tech"]内容1[/content]", "[content="Sales"]内容2[/content]"]
+    reg=/\[content="([^"]+)"]/;
+    console.log(reg.exec(t[0]));
+
+    reg=/\[content[^\]]+](.+?)\[\/content]/;//匹配时可以匹配一整段，需要的加（）
+    console.log(reg.exec(t[0]));
+    //*******************************************************
+
+    let uri="www.zhufeng.cn?course1=js&course=css";
+   /*  uri=uri.split('?')[1];
+    let obj={};
+    function parseQueryStr(uri){
+        let regpro=/([\w\d])+(?=\=)/g;
+        let regval=/[\w\d]+(?=&)|[\w\d]+$/g;
+        //console.log(regpro.exec(uri));
+        let prop=regpro.exec(uri);
+        while(prop){
+            console.log(prop);
+            obj[prop[0]]=regval.exec(uri)[0];//[0]
+            prop=regpro.exec(uri);
+        }
+    }
+    parseQueryStr(uri);
+    console.log(obj); */
+
+    reg=/([^=?&]+)=([^=?&]+)/g;//!!!!将course1=js整个匹配出来
+    console.log(uri.match(reg));
+
+//*********************************************************
+
+    //怎样把一个字符串中的连续空格替换为一个
+    //如何删除空行
+  /*   str=`zhufeng      peixun  
+    class 
+    
+       name`;
+    reg=/\s+/g;
+    str=str.replace(reg,' ');
+    console.log(str);
+
+ */
+//*********************************************************
+/* str="My name  is {0},I am {1} years old. I am in class {2} grade {3}.";
+var arrayx=new Array();
+arrayx[0]='lilei';
+arrayx[1]=13;
+arrayx[2]=4;
+arrayx[3]=6;
+
+str=str.replace(/{(\d)}/g,function($0,$1){
+    console.log($0);
+    return arrayx[$1];
+});
+console.log(str); */
+//*********************************************************
+
+/* str="my name is {name}, i am {age} years old. i am in class {class} grade {grade}";
+let info={
+    name:'lilei',
+    age:13,
+    class:4,
+    grade:6,
+}
+str=str.replace(/{(\w+)}/g,(...[,$1])=>{
+    return info[$1];
+
+});
+console.log(str); */
 
     </script>
 </body>
