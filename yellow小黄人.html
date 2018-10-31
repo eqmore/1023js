@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style type="text/css">
+    .wrapper{
+        width:300px;
+        margin: 100px auto;
+        position: relative;
+
+    }
+    .bodys{
+        width: 240px;
+        height: 400px;
+        background:rgb(249,217,70);
+        border-radius: 115px;
+        border:5px solid black;
+        z-index: 2;
+        position: relative;
+
+    }
+    .eyes{
+        width:85px;
+        height: 85px;
+        border: 6px solid black;
+        border-radius: 50%;
+        background: white;
+
+        position: relative;
+        z-index:2;
+        
+    }
+    .lefteye{
+        position: absolute;
+        left:27px;
+        top:60px;
+    }
+    .righteye{
+        position: absolute;
+        left:127px;
+        top:60px;
+    }
+    .leftblackeye,.rightblackeye{
+        -webkit-animation: blackeye 5s ease-in infinite;
+        animation: blackeye 5s ease-in infinite;
+    }
+    @-webkit-keyframes blackeye{
+		    0%,20%,50%,70%,100%{
+		        -webkit-transform: translateX(0px);
+		    }
+		    30%,40%{
+		        -webkit-transform: translateX(15px);
+		    }
+		    80%,90%{
+		        -webkit-transform: translateX(-15px);
+		    }
+		}
+    .rightblackeye{
+        width:40px;
+        height: 40px;
+        position: absolute;
+        left:24px;
+        top:22px;
+        background:black;
+        border-radius: 50%;
+        margin:10px auto;
+    }
+    .leftblackeye{
+        width:40px;
+        height: 40px;
+        position: absolute;
+        left:24px;
+        top:22px;
+        background:black;
+        border-radius: 50%;
+        margin:10px auto;
+    }
+    .leftwhite{
+        width:20px;
+        height: 20px;
+        background: white;
+        border-radius: 50%;
+        left:17px;
+        top:7px;
+        position: absolute;
+
+    }
+    .rightwhite{
+        width:20px;
+        height: 20px;
+        background: white;
+        border-radius: 50%;
+        left:17px;
+        top:7px;
+        position: absolute;
+
+        
+    }
+    .leftwhite,.rightwhite{
+        -webkit-animation: whiteeye 5s ease-in infinite;
+        animation: whiteeye 5s ease-in-out infinite;
+    }
+    @-webkit-keyframes whiteeye{
+		    0%,20%,50%,70%,100%{
+		        -webkit-transform: translateX(0px);
+		    }
+		    30%,40%{
+		        -webkit-transform: translate3D(3px,4px,0px);
+		    }
+		    80%,90%{
+		        -webkit-transform: translate3D(-15px,4px,0px);
+		    }
+		}
+         .mouth{
+            width:55px;
+            height: 35px;
+            border-left: 5px solid black;
+            border-bottom: 5px solid black;
+            position: absolute;
+            top: 198px;
+            left:93px;
+            border-bottom-left-radius: 30px;
+            transform: rotate(-34deg);
+            background: #fff;
+            z-index:2;
+        }
+        .mouth::after{
+            content: "";
+            display: block;
+             clear: both; 
+            width: 68px;
+            height: 30px;
+            border-bottom: 5px solid black;
+            transform: rotate(32deg);
+            left: -2px;
+            top: -13px;
+            position: absolute;
+            background: rgb(249,217,70);
+            z-index:2;
+        } 
+
+         /*.mouth{
+            width:35px;
+            height: 15px;
+            border-left: 5px solid black;
+            border-bottom: 5px solid black;
+            position: absolute;
+            top: 198px;
+            left:93px;
+            border-bottom-left-radius: 30px;
+            transform: rotate(-34deg);
+        }
+        .mouth::after{
+            content: "";
+            display: block;
+             clear: both; 
+            width: 44px;
+            height: 30px;
+            border-bottom: 5px solid black;
+            transform: rotate(24deg);
+            left: 3px;
+            top: -22px;
+            position: absolute;
+        } */
+
+         .mouth{
+            -webkit-animation: mouth 5s ease-in infinite;
+            animation: mouth 5s ease-in infinite;
+        }
+        @-webkit-keyframes mouth{
+		    25%,50%{
+                width:35px;
+                height: 15px;
+                border-left: 5px solid black;
+                border-bottom: 5px solid black;
+                position: absolute;
+                top: 198px;
+                left:93px;
+                border-bottom-left-radius: 30px;
+                transform: rotate(-34deg);
+		        
+		    }
+		    0%,100%{
+                width:55px;
+                height: 35px;
+                border-left: 5px solid black;
+                border-bottom: 5px solid black;
+                position: absolute;
+                top: 198px;
+                left:93px;
+                border-bottom-left-radius: 30px;
+                transform: rotate(-34deg);
+		        
+		    }
+		}
+
+         .mouth::after{
+            -webkit-animation: mouth_after 5s ease-in infinite;
+            animation: mouth_after 5s ease-in infinite;
+        }
+        @-webkit-keyframes mouth_after{
+		    0%,100%{
+                content: "";
+                display: block;
+                clear: both; 
+                width: 68px;
+                height: 30px;
+                border-bottom: 5px solid black;
+                transform: rotate(32deg);
+                left: -2px;
+                top: -13px;
+                position: absolute;
+		        
+		    }
+		    25%,50%{
+                content: "";
+                display: block;
+                clear: both; 
+                width: 44px;
+                height: 30px;
+                border-bottom: 5px solid black;
+                transform: rotate(24deg);
+                left: 3px;
+                top: -22px;
+                position: absolute;
+		        
+		    }
+		}
+        .leftfoot,.rightfoot{
+            width: 36px;
+            height: 50px;
+            border-bottom-right-radius: 6px;
+            border-bottom-left-radius: 9px;
+            background: #000;
+            position: absolute;
+            top: 406px;
+            left: 88px;
+            -webkit-animation: leftfoot .8s ease-in-out infinite;
+        }
+        @-webkit-keyframes leftfoot{
+            0%,50%,100%{
+                transform: rotate(0deg)
+            }
+            80%{
+                transform: rotate(-15deg)
+            }
+        }
+        .rightfoot{
+            left: 130px;
+            top:406px;
+            -webkit-animation: rightfoot .8s ease-in-out infinite;
+        }
+        @-webkit-keyframes rightfoot{
+            0%,50%,100%{
+                transform: rotate(0deg)
+            }
+            30%{
+                transform: rotate(15deg)
+            }
+        }
+
+
+        
+        .leftfoot::after,.rightfoot::after{
+            width:50px;
+            height: 36px;
+            background: #000;
+            clear: both;
+            content: '';
+            display: block;
+            position: absolute;
+            left:-40px;
+            top: 13px;
+            border-top-left-radius: 16px;
+            border-bottom-left-radius: 10px;
+        }
+        .rightfoot::after{
+            left:22px;
+            top: 13px;
+            border-top-right-radius: 16px;
+            border-bottom-right-radius: 10px;
+            
+       }
+
+       .lefthand,.righthand{
+            width: 80px;
+            height: 80px;
+            border: 6px solid #000;
+            border-radius: 25px;
+            background: rgb(249,217,70);
+            position: absolute;
+            top: 220px;
+            left: -23px;
+            -webkit-transform: rotate(40deg);   
+            -webkit-animation: lefthand 5s ease-in infinite;
+            animation: lefthand 5s ease-in infinite;                                            
+       }
+       .righthand{
+            left: 182px;
+            top: 220px;
+            -webkit-transform: rotate(-40deg);
+            -webkit-animation: righthand 5s ease-in infinite;
+            animation: righthand 5s ease-in infinite; 
+       }
+
+       @-webkit-keyframes lefthand{
+            0%,50%,100%{
+                transform: rotate(40deg)
+            }
+            30%{
+                transform: rotate(30deg)
+            }
+        }
+
+        @-webkit-keyframes righthand{
+            0%,50%,100%{
+                transform: rotate(40deg)
+            }
+            30%{
+                transform: rotate(50deg)
+            }
+        }
+
+
+
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="bodys"></div>
+        <div class="hair"></div>
+        <div class="eyes lefteye">
+            <div class="leftblackeye">
+                <div class="leftwhite"></div>
+            </div>
+        </div>
+        <div class="eyes righteye">
+            <div class="rightblackeye">
+                <div class="rightwhite"></div>
+            </div>
+        </div>
+        <div class="mouth"></div>
+        <div class="lefthand"></div>
+        <div class="righthand"></div>
+        <div class="leftfoot"></div>
+        <div class="rightfoot"></div>
+    </div>
+</body>
+</html>
