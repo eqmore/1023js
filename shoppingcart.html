@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/bootstrap.min.css">
+    <script src="./vue/vue2.min.js"></script>
+</head>
+<body>
+    <div id="app">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                        <h3>购物车</h3>
+                        <table class="table table-bordered">
+                            
+   
+                                <tr class="text-center">
+                                    <th class="text-center">型号</th>
+                                    <th class="text-center">价格</th>
+                                    <th class="text-center">操作</th>
+                                </tr>
+                                <tr class="text-center" v-for="iphone in iphones" v-model="iphones">
+                                    <td >{{iphone.name}}</td>
+                                    <td >{{iphone.price}}</td>
+                                    <td ><button type="button" class="button btn-xs btn-danger pull-right" @click="removeOne(iphone)">删除</button></td>
+                                </tr>
+                                <tr v-show="iphones.length"><td colspan="3">
+                                    <button type="button" @click="removeAll" class="button btn-danger">删除全部</button></td>
+                                </tr>
+                     
+                            </table>
+                            <form role="form">
+                                    <div class="form-group">
+                                        <label for="name" class="control-label">商品名称</label>
+                                        <input type="text" name="name" v-model="name" class="form-control" placeholder="请输入">
+                                    </div>
+                                    <div class="form-group">
+                                            <label for="price" class="control-label">商品价格</label>
+                                            <input type="text" name="price" v-model="price" class="form-control" placeholder="请输入">
+                                        </div>
+                                    <div class="form-group">
+                                            <button type="button" @click="add" class="btn btn-info">ok</button>
+                                            <button type="reset" @click="cancel" class="btn btn-warning">cancel</button>
+                                    </div>
+                                </form>
+                </div>
+                
+            </div>
+            
+        </div>
+    </div>
+    <script>
+        let vm=new Vue({
+            el:'#app',
+            data:{
+                name:'',
+                price:'',
+                iphones:[{name:'iphone5',price:'2800'},{name:'iphone6',price:'3800'}],
+            },
+            methods:{
+                removeOne:function(product){
+                    console.log(product.name);
+                    this.iphones=this.iphones.filter(function(e){
+                        return e!=product;//e.name!=product.name;
+                    });
+                    this.name='';
+                    this.price='';
+                },
+                removeAll:function(){
+                    this.iphones=[];
+                    this.name='';
+                    this.price='';
+                },
+                add:function(){
+                    this.iphones.push({name:this.name,price:this.price})
+                },
+                cancel:function(){
+                    this.name='';
+                    this.price='';
+                }
+            }
+
+        });
+    </script>
+</body>
+</html>
