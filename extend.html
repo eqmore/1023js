@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <pre>
+        继承
+            子类拥有父类的属性或方法
+        类式继承
+            调用父类，通过call改变this，实现属性继承
+        拷贝继承
+            浅拷贝
+            for in + hasOwnproperty
+            
+        原型继承
+        寄生组合继承
+
+        面向对象
+            属性-类式
+            方法-原型
+
+        array浅拷贝
+        array.concat(ary)
+        ary=[...ary]
+    </pre>
+    <script>
+        let a={}
+        Object.assign(a,Array.prototype);
+        console.log(a.tostring===Object.tostring);
+    </script>
+</body>
+</html>
