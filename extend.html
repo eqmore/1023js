@@ -5,32 +5,155 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <style>
+    span{
+        color:red;
+    }
+    </style>
 </head>
 <body>
     <pre>
         继承
             子类拥有父类的属性或方法
-        类式继承
+        call继承
             调用父类，通过call改变this，实现属性继承
         拷贝继承
             浅拷贝
             for in + hasOwnproperty
+            <span>Object.assign(Coder.prototype,Person.prototype);</span>
+            如果目标对象中的属性具有相同的键，则属性将被源中的属性覆盖。
+            后来的源的属性将类似地覆盖早先的属性。
             
         原型继承
+            function Ph(){}
+            Ph.prototype=Person.prototype
+            Coder.prototype=new Ph();
+            Coder.prototype.constructor=Coder;
+            //性能
+            Coder.prototype=new Person();
         寄生组合继承
+            call
+            Coder.prototype=Object.Create(Person.prototype);
+            //此时coder的prototype是一个{}，__proto__指向person的prototype
+
+            <span> Object.create(A.prototype);</span>
+            // 等同于
+            B.prototype.__proto__ = A.prototype;
+
+            Object.create：内置Object类天生自带的方法
+            1.创建一个空对象
+            2.让新创建的空对象的__proto__指向第一个传递进来的对象
+
+        ES6
+            class Coder extends Person{
+                constructor(子类独有,...arg){
+                    super(...arg);//灵活
+                }
+            }
 
         面向对象
             属性-类式
             方法-原型
 
+        <span>Object.defineProperties(obj, props)</span>
+            configurable
+            true 当且仅当该属性描述符的类型可以被改变并且该属性可以从对应对象中删除。
+            默认为 false
+            enumerable
+            true 当且仅当在枚举相应对象上的属性时该属性显现。
+            默认为 false
+            value
+            与属性关联的值。可以是任何有效的JavaScript值（数字，对象，函数等）。
+            默认为 undefined.
+            writable
+            true当且仅当与该属性相关联的值可以用assignment operator改变时。
+            默认为 false
+            get
+            作为该属性的 getter 函数，如果没有 getter 则为undefined。函数返回值将被用作属性的值。
+            function (){
+                this.num+2;
+            }
+            默认为 undefined
+            set
+            作为属性的 setter 函数，如果没有 setter 则为undefined。函数将仅接受参数赋值给该属性的新值。
+            默认为 undefined
+           <span> Object.defineProperty(obj,name,prop)</span>
+
+        //for...in循环：只遍历对象自身的和继承的可枚举的属性。
+        Object.keys()：返回对象自身的所有可枚举的属性的键名。
+        JSON.stringify()：只串行化对象自身的可枚举的属性。
+        Object.assign()忽略enumerable为false的属性，只拷贝对象自身的可枚举的属性。
+
+        Reflect.ownKeys(obj)
+
+        Reflect.ownKeys返回一个数组，包含对象自身的所有键名，不管键名是 Symbol 或字符串，也不管是否可枚举。
+
         array浅拷贝
         array.concat(ary)
         ary=[...ary]
+
+        document.getElementById().classList.add\remove\contains\toggle()
     </pre>
     <script>
+        
         let a={}
         Object.assign(a,Array.prototype);
         console.log(a.tostring===Object.tostring);
+
+        let obj={
+            num:2,
+        };
+        let n=obj.num;
+        Object.defineProperty(obj,"num",{
+        get: function(){
+            //数据劫持
+            n+=2;
+            return n;
+        }
+        })
+        console.log(obj.num<5 && obj.num>5)
+
+        function P(){
+            this.name='p';
+        }
+        P.prototype.say=function(){console.log('pp')}
+        let c={};
+        c.__proto__=P;
+        console.log(c.name);
+        c.say();
+
+/*
+        var _createClass = function () { 
+            function defineProperties(target, props) { 
+                for (var i = 0; i < props.length; i++) { 
+                    var descriptor = props[i]; 
+                    descriptor.enumerable = descriptor.enumerable || false; 
+                    descriptor.configurable = true; 
+                    if ("value" in descriptor) 
+                    descriptor.writable = true; 
+                    Object.defineProperty(target, descriptor.key, descriptor);
+                     } 
+                     }
+                      return function (Constructor, protoProps, staticProps) { 
+                          if (protoProps) defineProperties(Constructor.prototype, protoProps); 
+                          if (staticProps) defineProperties(Constructor, staticProps); 
+                          return Constructor; }; }();
+
+        function _possibleConstructorReturn(self, call) { if (!self) 
+        { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } 
+        return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+         _possibleConstructorReturn(this, (Coder.__proto__ || Object.getPrototypeOf(Coder)).apply(this, arguments));
+
+function _inherits(subClass, superClass) { 
+    if (typeof superClass !== "function" && superClass !== null) 
+    { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } 
+    subClass.prototype = Object.create(superClass && superClass.prototype, 
+    { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); 
+    if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+*/
+
     </script>
 </body>
 </html>
