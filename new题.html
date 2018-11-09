@@ -93,7 +93,7 @@
     console.log(n, obj.n); */
 
 
-    function Foo() {
+    /* function Foo() {
         getName = function () { alert (1); };
         return this;
     }
@@ -109,7 +109,28 @@
     getName();//1
     new Foo.getName();//2
     new Foo().getName();//3
-    new new Foo().getName();//3
+    new new Foo().getName();//3 */
+
+    var num=5;
+    var obj={num:18};
+    obj.fn=(function(num){
+        this.num=num*5;
+        num--;
+        return function(n){
+            this.num-=n;
+            num++;
+            console.log(num);
+        }
+    })(obj.num);
+    var fn=obj.fn;
+    fn(3);//this.num=num*5并不是this.num*5
+    obj.fn(20);
+    new obj.fn(10);//new的时候this.num为NaN并不是obj.num
+    console.log(num,obj.num);
+
+
+
+
 
 
     /* (new Foo()).getName()，但是跟括号优先级高于成员访问没关系，

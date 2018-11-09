@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    .box{
+        width: 100px;
+        height: 100px;
+        background:red;
+        margin-left:100px;
+        right:100px;
+        top: 0;
+        position: absolute;
+    }
+    </style>
+</head>
+<body>
+    <!-- 
+        domEl.style.width只能获取行间属性？因为dom映射
+        获取元素计算后的样式
+        getComputedStyle(ele).attr          //低版本ie ele.currentStyle.attr
+
+        可见样式
+        **ele.clientWidth/clientHeight //包含content+padding
+
+        **ele.offsetWidth/offsetHeight //包含content+padding+border
+
+        **ele.scrollWidth/scrollHeight //被内容撑开的高度
+
+        绝对位置
+        offsetParent
+        //距离
+        **offsetLeft子左外-父左内/offsetTop
+        
+        //
+        clientLeft边框
+
+        //getBoundingClientRect.left//获取的值会随浏览器变化而变化,top是距可视窗的距离
+        {x y width height top right left }
+        
+
+
+
+
+
+     -->
+     <div class="box" id="box">
+            123
+            123
+            123
+            123123
+            123
+            123
+            123
+            123123
+            123
+            123
+            123
+            123123
+            123
+            123
+            123
+            123123
+            123
+            123
+            123
+            123123
+
+
+
+            123
+            123
+            123
+            123123
+
+
+
+
+            123
+            123
+            123
+            123123
+
+
+
+            123
+            123
+            123
+            123123
+        </div>
+    <script>
+    
+    </script>
+</body>
+</html>

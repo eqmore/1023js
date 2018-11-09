@@ -141,7 +141,7 @@ console.log(str.match(reg1));//"fdjka ljfdl"
     //console.log(s.match(reg));
     console.log(a); */
 
-    reg=/(([^"]+)(?="]))|([^\[\]]+(?=\[\/))/g;
+    /* reg=/(([^"]+)(?="]))|([^\[\]]+(?=\[\/))/g;
     console.log(s.match(reg));
     console.log(s.match(/(([^"]+)(?="]))/g));
 
@@ -152,7 +152,7 @@ console.log(str.match(reg1));//"fdjka ljfdl"
     console.log(reg.exec(t[0]));
 
     reg=/\[content[^\]]+](.+?)\[\/content]/;//匹配时可以匹配一整段，需要的加（）
-    console.log(reg.exec(t[0]));
+    console.log(reg.exec(t[0])); */
     //*******************************************************
 
     let uri="www.zhufeng.cn?course1=js&course=css";
@@ -215,6 +215,55 @@ str=str.replace(/{(\w+)}/g,(...[,$1])=>{
 
 });
 console.log(str); */
+
+//匹配标签
+    /* str='<span class="class1 calss2">shujuneirong1</span><span class="class1 calss2">shujuneirong</span>';
+    reg=/<[^>]+>/g;
+    console.log(str.replace(reg,function(){
+        return '';
+    }));
+ */
+   /*  str="li1 ";
+    let className="li1";
+    reg=new RegExp('\\b'+className+"\\b");
+    reg=new RegExp('(^|\\s)'+className+'(\\s|$)')
+    console.log(reg.exec(str));
+
+ */
+    //找到字符串中出现最多的字符
+    //对象保存键值对
+    /* let n=-Infinity;
+    let name;
+    str="afdlkdjfieiiejwoajjdjfjkffkdkkdjfjjfjfkdas";
+    str=str.split('').sort().join('');
+    str.replace(/(\w)\1+/g,function($0,$1){
+        if(n<$0.length){
+            n=$0.length;
+            name=$1;
+        }
+    });
+    console.log(n,name); */
+
+    /* var names = ['Alice', 'Bob', 'Tiff', 'Bruce', 'Alice'];
+
+    var countedNames = names.reduce(function (allNames, name) { 
+    if (name in allNames) {
+        allNames[name]++;
+    }
+    else {
+        allNames[name] = 1;
+    }
+    return allNames;
+    }, {});
+    // countedNames is:
+    // { 'Alice': 2, 'Bob': 1, 'Tiff': 1, 'Bruce': 1 } */
+
+    //. 除了\n \r的任意字符
+    //[\s\S]匹配任意字符
+
+
+
+
 
     </script>
 </body>

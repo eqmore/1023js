@@ -84,7 +84,7 @@
         }
     }
     //实现传递 带参数函数  promise中定义了resolve,rejected函数，执行的executor参数为这两个函数
-    let p=new Prom(function(resolve,rejected){
+    /* let p=new Prom(function(resolve,rejected){
         setTimeout(()=>{
             if(0){
                 resolve('1');
@@ -107,7 +107,7 @@
         },(err)=>{
             console.log(err+"1");
         }
-    )
+    ) */
 
      /*  p.then(function(data){
         console.log(data);
@@ -122,6 +122,8 @@
         }
     ) */
 
+  
+
     //********怎么实现的传递一个（带两个函数参数）函数参数
     /* function a(ex){
         function re(data){
@@ -132,6 +134,22 @@
     a(function(re){
         re(1);
     }); */
+
+
+    let promise = new Prom(function(resolve, reject) {
+    console.log('Promise');
+    resolve();
+    });
+
+    promise.then(function() {
+    console.log('resolved.');
+    });
+
+    console.log('Hi!');
+
+    // Promise
+    // Hi!
+    // resolved
 
 
 
