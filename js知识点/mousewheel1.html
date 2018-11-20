@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    div{
+        width: 100vw;
+        height: 100vh;
+    }
+    body{
+        overflow: hidden;
+        transition: 1s;
+        position: relative;
+        top: 0;
+    }
+    </style>
+</head>
+<body>
+    <script>
+        let colors=['blue','red','yellow','green','purple','pink'];
+        let div='';
+        let num=0;
+        let vh=window.innerHeight;
+        let onOFF=false;
+        colors.forEach((e,i)=>{
+            div += `<div style='background:${colors[i]}'></div>`;
+        })
+        document.body.innerHTML=div;
+        function myWheel(obj,move){
+            //firefox
+            if(window.onmousewheel===undefined){
+                obj.addEventListener("DOMMouseScroll",fn)
+            }else
+            {//chrome
+                obj.addEventListener("mousewheel",fn)
+            }
+            function fn(ev){
+                console.log(ev.deltaY)
+                if(ev.deltaY){//chrome
+                    direction=ev.deltaY<0?true:false;
+                }else{//firefox
+                    direction=ev.detail>0?true:false;
+                }
+                move.call(obj,direction);
+            }
+        }
+        
+        myWheel(document.body,function(direction){
+            if(onOFF) return;
+            onOFF=true;
+            console.log(direction);
+            if(direction){//向上
+                if(num>0) num--;
+            }else
+            {
+                if(num===colors.length-1){
+                    num=colors.length-1;
+                }else{
+                    num++;
+                } 
+                
+                
+            }
+            console.log(num)
+            this.style.top=-num*vh+"px";
+            setTimeout(() => {
+                onOFF=false;  
+            }, 1000);
+            
+        })
+    </script>
+</body>
+</html>

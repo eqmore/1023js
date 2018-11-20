@@ -5,12 +5,49 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
-	<style></style>
+    <style>
+    div{
+        width: 100px;
+        height: 100px;
+        background: red;
+        margin-left: 10px;
+    }
+    #out{
+        background:green;
+        position: absolute;
+        left:0;
+    }
+    </style>
 </head>
 <body>
     <div></div>
+    <ul id='ul'><li>1</li>
+        <li>2</li>
+        <li>3</li>
+    </ul>
+    <div id="out" >
+     </div>
+    <div id="inner"></div>
      <script>
-	var aa;
+         let timer;
+         let time=0;
+         (function move(){
+             timer=requestAnimationFrame(move);
+             console.log(out.style.left);
+             time+=1;
+             out.style.left=15*time+'px';
+             if(time>=10){
+                 cancelAnimationFrame(timer);
+             }
+         })()
+         out.onmouseover=function(){alert('out over')}
+         out.onmouseout=function(){alert('out out')}
+         inner.onmouseover=function(){alert('inner over')}
+         inner.onmouseout=function(){alert('inner out')}
+         ul.addEventListener('click',(ev)=>{
+             ev.target.style.background='red';
+         },true);//捕获
+	    var aa;
          let ary=[12,12,13];
          let [...arg]=ary;//ary.slice(0);
 
@@ -19,7 +56,7 @@
 
          //JSON.stringigy undefined function 转不出
          let unstandardJSON="{'name':'xx'}";
-         eval("("+x+")");
+         //eval("("+x+")");
 
          //arguments=[...arguments]
          //Array.from()
