@@ -5,4 +5,9 @@
       <option name="JAVA_SCRIPT" value="true" />
     </context>
   </template>
+  <template name="reactd" value="import React from 'react';&#10;import ReactDOM from 'react-dom';&#10;&#10;ReactDOM.render(,window.root);" toReformat="false" toShortenFQNames="true">
+    <context>
+      <option name="JAVA_SCRIPT" value="true" />
+    </context>
+  </template>
 </templateSet>
